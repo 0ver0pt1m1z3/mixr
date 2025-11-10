@@ -12,25 +12,25 @@ foreach(CONFIG ${CMAKE_CONFIGURATION_TYPES})
 endforeach()
 
 file(GLOB BASE_SOURCES "./*.cpp")
-file(GLOB BASE_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/*.hpp)
+file(GLOB BASE_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/*.hpp)
 
 file(GLOB COLORS_SOURCES "./colors/*.cpp")
-file(GLOB COLORS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/colors/*.hpp)
+file(GLOB COLORS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/colors/*.hpp)
 
 file(GLOB CONCEPTS_SOURCES "./concepts/*.cpp")
-file(GLOB CONCEPTS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/concepts/*.hpp)
+file(GLOB CONCEPTS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/concepts/*.hpp)
 
 file(GLOB EDL_SOURCES "./edl/*.cpp")
-file(GLOB EDL_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/edl/*.hpp)
+file(GLOB EDL_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/edl/*.hpp)
 
 file(GLOB LINEAR_SOURCES "./linearsystem/*.cpp")
-file(GLOB LINEAR_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/linearsystem/*.hpp)
+file(GLOB LINEAR_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/linearsystem/*.hpp)
 
 file(GLOB NETWORK_SOURCES "./network/*.cpp")
-file(GLOB NETWORK_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/network/*.hpp)
+file(GLOB NETWORK_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/network/*.hpp)
 
 file(GLOB NUMERIC_SOURCES "./numeric/*.cpp")
-file(GLOB NUMERIC_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/numeric/*.hpp)
+file(GLOB NUMERIC_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/numeric/*.hpp)
 
 #file(GLOB OSG_SOURCES "./osg/*.cpp")
 set(OSG_SOURCES
@@ -41,30 +41,30 @@ set(OSG_SOURCES
     "./osg/Quat.cpp"
 )
 file(GLOB OSG_HEADERS 
-    ${CMAKE_SOURCE_DIR}/include/mixr/base/osg/*.hpp
-    ${CMAKE_SOURCE_DIR}/include/mixr/base/osg/*
+    ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/osg/*.hpp
+    ${CMAKE_SOURCE_DIR}/include/mixr/b${PROJECT_NAME}/osg/*
 )
 
 file(GLOB QTY_SOURCES "./qty/*.cpp")
-file(GLOB QTY_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/qty/*.hpp)
+file(GLOB QTY_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/qty/*.hpp)
 
 file(GLOB RELATIONS_SOURCES "./relations/*.cpp")
-file(GLOB RELATIONS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/realtions/*.hpp)
+file(GLOB RELATIONS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/realtions/*.hpp)
 
 file(GLOB THREADS_SOURCES "./threads/*.cpp")
-file(GLOB THREADS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/threads/*.hpp)
+file(GLOB THREADS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/threads/*.hpp)
 
 file(GLOB TIMERS_SOURCES "./timers/*.cpp")
-file(GLOB TIMERS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/timers/*.hpp)
+file(GLOB TIMERS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/timers/*.hpp)
 
 file(GLOB TRANS_SOURCES "./transformations/*.cpp")
-file(GLOB TRANS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/transformations/*.hpp)
+file(GLOB TRANS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/transformations/*.hpp)
 
 file(GLOB UBF_SOURCES "./ubf/*.cpp")
-file(GLOB UBF_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/ubf/*.hpp)
+file(GLOB UBF_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/ubf/*.hpp)
 
 file(GLOB UTIL_SOURCES "./util/*.cpp")
-file(GLOB UTIL_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/base/util/*.hpp)
+file(GLOB UTIL_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/util/*.hpp)
 
 # Combine all sources and headers
 set(ALL_SOURCES
@@ -104,10 +104,10 @@ set(ALL_HEADERS
 )
 
 # Create the library
-add_library(base ${ALL_SOURCES} ${ALL_HEADERS})
+add_library(${PROJECT_NAME} ${ALL_SOURCES} ${ALL_HEADERS})
 
 # Add include directories - fix the path
-target_include_directories(base
+target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${CMAKE_SOURCE_DIR}/include
 )
@@ -146,4 +146,4 @@ source_group("Header Files\\ubf" FILES ${UBF_HEADERS})
 source_group("Header Files\\util" FILES ${UTIL_HEADERS})
 
 # Optional: Set folder property for the target in Visual Studio
-set_target_properties(base PROPERTIES FOLDER "Base")
+set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Base")

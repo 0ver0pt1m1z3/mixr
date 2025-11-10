@@ -6,7 +6,7 @@ codeblocks/
 codelite/
 .vscode/
 build-2022/
-dependencies
+dependencies/
 
 # lib directory
 lib/

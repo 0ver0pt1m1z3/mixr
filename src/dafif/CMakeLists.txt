@@ -12,13 +12,13 @@ foreach(CONFIG ${CMAKE_CONFIGURATION_TYPES})
 endforeach()
 
 file(GLOB DAFIF_SOURCES "./*.cpp")
-file(GLOB DAFIF_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/dafif/*.hpp)
+file(GLOB DAFIF_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/*.hpp)
 
 file(GLOB LOADERS_SOURCES "./loaders/*.cpp")
-file(GLOB LOADERS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/dafif/loaders/*.hpp)
+file(GLOB LOADERS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/loaders/*.hpp)
 
 file(GLOB RECORDS_SOURCES "./records/*.cpp")
-file(GLOB RECORDS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/dafif/records/*.hpp)
+file(GLOB RECORDS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/records/*.hpp)
 
 # Combine all sources and headers
 set(ALL_SOURCES
@@ -34,10 +34,10 @@ set(ALL_HEADERS
 )
 
 # Create the library
-add_library(dafif ${ALL_SOURCES} ${ALL_HEADERS})
+add_library(${PROJECT_NAME} ${ALL_SOURCES} ${ALL_HEADERS})
 
 # Add include directories - fix the path
-target_include_directories(dafif
+target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${CMAKE_SOURCE_DIR}/include
 )
@@ -53,4 +53,4 @@ source_group("Header Files\\records" FILES ${RECORDS_HEADERS})
 
 
 # Optional: Set folder property for the target in Visual Studio
-set_target_properties(dafif PROPERTIES FOLDER "Dafif")
+set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Dafif")

@@ -12,19 +12,19 @@ foreach(CONFIG ${CMAKE_CONFIGURATION_TYPES})
 endforeach()
 
 file(GLOB IGHOST_SOURCES "./*.cpp")
-file(GLOB IGHOST_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/ighost/*.hpp)
+file(GLOB IGHOST_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/*.hpp)
 
 file(GLOB CIGI_SOURCES "./cigi/*.cpp")
-file(GLOB CIGI_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/ighost/cigi/*.hpp)
+file(GLOB CIGI_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/cigi/*.hpp)
 
 file(GLOB SESSION_SOURCES "./cigi/session/*.cpp")
-file(GLOB SESSION_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/ighost/cigi/session/*.hpp)
+file(GLOB SESSION_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/cigi/session/*.hpp)
 
 file(GLOB FLIGHTGEAR_SOURCES "./flightgear/*.cpp")
-file(GLOB FLIGHTGEAR_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/ighost/flightgear/*.hpp)
+file(GLOB FLIGHTGEAR_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/flightgear/*.hpp)
 
 file(GLOB POV_SOURCES "./pov/*.cpp")
-file(GLOB POV_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/ighost/pov/*.hpp)
+file(GLOB POV_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/pov/*.hpp)
 
 # Combine all sources and headers
 set(ALL_SOURCES
@@ -44,10 +44,10 @@ set(ALL_HEADERS
 )
 
 # Create the library
-add_library(ighost ${ALL_SOURCES} ${ALL_HEADERS})
+add_library(${PROJECT_NAME} ${ALL_SOURCES} ${ALL_HEADERS})
 
 # Add include directories - fix the path
-target_include_directories(ighost
+target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/dependencies/include
@@ -67,4 +67,4 @@ source_group("Header Files\\flightgear" FILES ${FLIGHTGEAR_HEADERS})
 source_group("Header Files\\pov" FILES ${POV_HEADERS})
 
 # Optional: Set folder property for the target in Visual Studio
-set_target_properties(ighost PROPERTIES FOLDER "IGhost")
+set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "IGhost")

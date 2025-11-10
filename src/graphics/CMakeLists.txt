@@ -12,16 +12,16 @@ foreach(CONFIG ${CMAKE_CONFIGURATION_TYPES})
 endforeach()
 
 file(GLOB GRAPHICS_SOURCES "./*.cpp")
-file(GLOB GRAPHICS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/graphics/*.hpp)
+file(GLOB GRAPHICS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/*.hpp)
 
 file(GLOB FONTS_SOURCES "./fonts/*.cpp")
-file(GLOB FONTS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/graphics/fonts/*.hpp)
+file(GLOB FONTS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/fonts/*.hpp)
 
 file(GLOB READOUTS_SOURCES "./readouts/*.cpp")
-file(GLOB READOUTS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/graphics/readouts/*.hpp)
+file(GLOB READOUTS_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/readouts/*.hpp)
 
 file(GLOB FTGL_SOURCES "./fonts/ftgl/*.cpp")
-file(GLOB FTGL_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/graphics/fonts/ftgl/*.hpp)
+file(GLOB FTGL_HEADERS ${CMAKE_SOURCE_DIR}/include/mixr/${PROJECT_NAME}/fonts/ftgl/*.hpp)
 
 # Combine all sources and headers
 set(ALL_SOURCES
@@ -39,10 +39,10 @@ set(ALL_HEADERS
 )
 
 # Create the library
-add_library(graphics ${ALL_SOURCES} ${ALL_HEADERS})
+add_library(${PROJECT_NAME} ${ALL_SOURCES} ${ALL_HEADERS})
 
 # Add include directories - fix the path
-target_include_directories(graphics
+target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/dependencies/include
@@ -62,4 +62,4 @@ source_group("Header Files\\readouts" FILES ${READOUTS_HEADERS})
 
 
 # Optional: Set folder property for the target in Visual Studio
-set_target_properties(graphics PROPERTIES FOLDER "Graphics")
+set_target_properties(${PROJECT_NAME} PROPERTIES FOLDER "Graphics")
