@@ -7,7 +7,8 @@
 
 namespace mixr {
 namespace hla {
-class INetIO;
+
+class NetIO;
 
 //------------------------------------------------------------------------------
 // Class: Ambassador
@@ -20,7 +21,7 @@ class INetIO;
 //
 // Public member functions:
 //
-//      hla::INetIO* getNetIO()
+//      hla::NetIO* getNetIO()
 //          Returns a pointer to the HLA Network I/O class that is controlling
 //          this ambassador.
 //
@@ -28,13 +29,13 @@ class INetIO;
 class Ambassador : public RTI::FederateAmbassador
 {
 public:
-   Ambassador(INetIO* nio);
+   Ambassador(NetIO* nio);
    virtual ~Ambassador() throw(RTI::FederateInternalError);
 
-   INetIO* getNetIO()                           { return hlaIo; }
+   NetIO* getNetIO()                           { return hlaIo; }
 
 private:
-   INetIO* hlaIo {};         // Our controlling NetIO
+   NetIO* hlaIo {};         // Our controlling NetIO
 
 // ---
 // -- Standard FederateAmbassador interface --
