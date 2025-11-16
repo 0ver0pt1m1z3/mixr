@@ -11,27 +11,27 @@
  * OpenSceneGraph Public License for more details.
 */
 
-#include "mixr/base/osg/Matrixf"
 #include "mixr/base/osg/Matrixd"
+#include "mixr/base/osg/Matrixf"
 
-// specialized Matrix_implementation to be Matrixf
-#define  Matrix_implementation Matrixf
+// specialized Matrix_implementation to be Matrixd
+#define  Matrix_implementation Matrixd
 
 namespace mixr {
 namespace base {
 
-Matrixf::Matrixf( const Matrixd& mat )
+Matrixd::Matrixd( const Matrixf& mat )
 {
     set(mat.ptr());
 }
 
-Matrixf& Matrixf::operator = (const Matrixd& rhs)
+Matrixd& Matrixd::operator = (const Matrixf& rhs)
 {
     set(rhs.ptr());
     return *this;
 }
 
-void Matrixf::set(const Matrixd& rhs)
+void Matrixd::set(const Matrixf& rhs)
 {
     set(rhs.ptr());
 }
@@ -40,5 +40,4 @@ void Matrixf::set(const Matrixd& rhs)
 }
 
 // now compile up Matrix via Matrix_implementation
-#include "Matrix_implementation.c"
-
+#include "Matrix_implementation.cpp"

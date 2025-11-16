@@ -1,5 +1,5 @@
 
-#include "IgThread.hpp"
+#include "mixr/ighost/cigi/IgThread.hpp"
 
 #include "mixr/ighost/cigi/CigiHost.hpp"
 #include "mixr/ighost/cigi/session/HostSession.hpp"
