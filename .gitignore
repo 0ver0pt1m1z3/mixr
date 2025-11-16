@@ -5,7 +5,7 @@ vs2022/
 codeblocks/
 codelite/
 .vscode/
-build-2022/
+build/
 
 # lib directory
 lib/
